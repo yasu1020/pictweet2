@@ -1,5 +1,4 @@
-
-<h2>画像一覧</h2>
+<h2><%= @nickname %>さんの投稿一覧</h2>
 <% @tweets.each do |tweet| %>
 
 <div class="panel panel-default">
@@ -7,7 +6,6 @@
     <%= image_tag tweet.image , :size => '300x300' %></p>
     <%= tweet.text %>
   </div>
-  <div class="panel-footer text-right"><%= tweet.user.nickname %></div>
 </div>
 <% end %>
 
