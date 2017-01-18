@@ -6,6 +6,11 @@
   <div class="panel-body text-center">
     <%= image_tag tweet.image , :size => '300x300' %></p>
     <%= tweet.text %>
+    <%= link_to '詳細', "/tweets/#{tweet.id}", method: :get %>
+    <% if user_signed_in? && current_user.id == tweet.user_id %>
+    <%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %>
+    <%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %>
+    <% end %>
   </div>
   <div class="panel-footer text-right"><%= tweet.user.nickname %></div>
 </div>

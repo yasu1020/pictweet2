@@ -1,0 +1,39 @@
+<h2>画像一覧</h2>
+
+<div class="panel panel-default">
+  <div class="panel-body text-center">
+    <%= image_tag @tweet.image , :size => '300x300' %></p>
+    <%= @tweet.text %>
+    <% if user_signed_in? && current_user.id == @tweet.user_id %>
+    <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
+    <%= link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get %>
+    <% end %>
+  </div>
+  <div class="panel-footer text-right"><%= @tweet.user.nickname %></div>
+</div>
+
+
+<div class="container">
+<h3>コメントを記入する</h3>
+
+<% if current_user %>
+<%= form_tag("/tweets/#{@tweet.id}/comments", method: :post) do %>
+  <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
+  <input type="submit" value="SENT">
+<% end %>
+
+<% end %>
+
+</div>
+
+
+
+<% if @comments %>
+<div class="container">
+<h3>コメント一覧</h3>
+  <% @comments.each do |comment| %>
+    <p><%= comment.text %>（<%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>）</p>
+  <% end %>
+</div>
+<% end %>
+

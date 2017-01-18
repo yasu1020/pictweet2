@@ -1,0 +1,30 @@
+
+<div class="container">
+
+  <div class="row">
+
+    <h3>編集する</h3>
+
+    <%= form_tag("/tweets/#{@tweet.id}", method: :patch) do %>
+
+    <div class="form-group">
+      <label for="ImageUrl">Url</label>
+      <input type="text" class="form-control" id="ImageUrl" name="image" placeholder="画像URL" value="<%=  @tweet.image %>">
+    </div>
+
+
+    <div class="form-group">
+      <label for="Text">Comment</label>
+      <textarea class="form-control" rows="3" id="text" name="text" placeholder="ここにコメントを入力してください"><%= @tweet.text %></textarea>
+    </div>
+
+    <input type="submit" class="btn btn-primary btn-lg" value="投稿">
+
+    <% end %>
+
+  </div>
+
+</div>
+
+
+
